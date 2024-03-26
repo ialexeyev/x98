@@ -1,0 +1,12 @@
+X98: V.1.01
+1. Set run button & create main application file - app.py;
+2. Creating project folder - 'cmap';
+3. Inside 'cmap' folder: creating files: __init__.py, auth.py, views.py, folders: 'templates' & static;
+4. On main application folder creating file 'requirements.txt' (for render.com);
+5. Defiing '__init_..py': import Flask library, defining 'create_app' function. Configuring secret key for application.
+6. Defining 'views.py', initianing blueprint for home page;
+7. Defining template: 'base.html';
+8. Defining home page: 'index.html', 'static.css', 'main.js';
+9. Import static files: images, icons, fonts.
+
+X98: V.1.02
