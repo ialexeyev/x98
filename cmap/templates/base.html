@@ -4,29 +4,28 @@
   <head>
     <meta charset = "utf-8">
     <meta name = "viewport" content = "width=device-width, initial-scale=1">
-    <title>{% block title %}Home{% endblock %}</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel = "stylesheet" href = "../static/stylesheet/main.css"></link>
     <link rel = "icon" href = "../static/ico/logo.ico"></link>
+    {% block styles %}{% endblock %}
   </head>
   <body>
     <header>
       <div id = "appLogo" onclick = "window.location.href = '/'">
         <img src = "../static/img/logo.png" alt = "CMAP" id = "appLogoImg">
-        <h1 id = "appLogoText">{% print(header) %}</h1>
+        <h1 id = "appLogoText">{{headers['applicationName']}}</h1>
       </div>  
       <div id = "companyLogo">
         <img src = "../static/img/hyundailogo.png" alt = "Hyundai" id = "companyLogoImg" onclick = "window.open('https://www.hyundai.com/kz/ru', '_blank');">
       </div>
     </header>
     <main>
-      <div class ="MainWall" id = "mainWallLogin">
-        {% block content %} 
-        {% endblock %}
-      </div>
+      {% block content %}{% endblock %}
     </main>
     <footer>
-      <h5 id = "footerText">©2024 Hyundai Trans Kazakhstan | Almaty | All Rights Reserved</h5>
+      <h5 id = "footerText">{{headers['footer']}}</h5>
     </footer>
+    {% block scripts %}{% endblock %}
     <script src = "../static/js/main.js"></script>
   </body>
 </html>

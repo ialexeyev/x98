@@ -1,7 +1,191 @@
 {% extends "base.html" %} 
 
-{% block title %}CMAP: Hyundai Trans Kazakhstan{% endblock %}
+{% block title %}{{headers['titleHomePage']}}{% endblock %}
+{% block styles %}
+  <link rel = "stylesheet" href = "../static/stylesheet/home.css"></link>
+{% endblock %}
 
 {% block content %} 
-  <h1>Hello world!</h1>
+  <div class ="MainWall" id = "mainWallHome">
+    <div class = "WallBlocks" id = "homeDataBlock">
+      <div class = "DataBlocks" id = "statusBlock">
+        <!-- Current date and time -->
+        <div class = "StatusIndicatorsBlocks" id = "currentTimeBlock">
+          <h2 class = "DataBlockHeaders" id = "currentTimeHeader">{{time}}</h2>
+        </div>
+        <!-- Plant mode indicator -->
+        <div class = "StatusIndicatorsBlocks" id = "plantModeBlock"> 
+          <h2 class = "DataBlockHeaders" id = "statusBlockHeader">Plant mode:</h2> 
+          <label class="Switch" id = "plantModeSwitch">
+            <input type="checkbox" class = "CheckBox" id = "plantModeCheckbox">
+            <span class="Slider" id = "plantModeSlider"></span>
+          </label>
+        </div>
+        <!-- SHIFT incicator -->
+        <div class = "StatusIndicatorsBlocks" id = "shiftBlock">
+          <h2 class = "DataBlockHeaders" id = "shiftHeader">Shift:</h2>
+          <span id = "shiftIndicator">B</span>
+        </div>
+        <!-- ModelCKD indicator -->
+        <div class = "StatusIndicatorsBlocks" id = "modelCKDBlock">
+          <h2 class = "DataBlockHeaders" id = "modelCKDHeader">CKD model:</h2>
+          <div class = "IconBlocks" id = "ckdModelIconBlock">
+            <img alt = "model-icon" src = "../static/img/models/nx4.png" class = "ModelIconImg" title = "NX4"> 
+          </div>
+        </div>
+        <!-- ModelDKD indicator -->
+        <div class = "StatusIndicatorsBlocks" id = "modelDKDBlock">
+          <h2 class = "DataBlockHeaders" id = "modelDKDHeader">DKD model:</h2>
+          <div class = "IconBlocks" id = "dkdModelIconBlock">
+            <img alt = "model-icon" src = "../static/img/models/bc3.png" class = "ModelIconImg" title = "BC3"> 
+          </div>
+        </div>
+        <!-- BODY SHOP mode indicator -->
+        <div class = "StatusIndicatorsBlocks" id = "bodyShopModeBlock">
+          <h2 class = "DataBlockHeaders" id = "bodyShopModeHeader">Body shop:</h2>
+          <label class="Switch" id = "bodyShopModeSwitch">
+            <input type="checkbox" class = "CheckBox" id = "bodyShopModeCheckBox">
+            <span class="Slider" id = "bodyShopModeSlider"></span>
+          </label>
+        </div>
+        <!-- PAINT SHOP mode indicator -->
+        <div class = "StatusIndicatorsBlocks" id = "paintShopModeBlock">
+          <h2 class = "DataBlockHeaders" id = "paintShopModeHeader">Paint shop:</h2>
+          <label class="Switch" id = "paintShopModeSwitch">
+            <input type="checkbox" class = "CheckBox" id = "paintShopModeCheckBox">
+            <span class="Slider" id = "paintShopModeSlider"></span>
+          </label>
+        </div>
+        <!-- PLASTIC PAINT SHOP mode indicator -->
+        <div class = "StatusIndicatorsBlocks" id = "plasticPaintShopModeBlock">
+          <h2 class = "DataBlockHeaders" id = "plasticPaintShopModeHeader">Plastic paint shop:</h2>
+          <label class="Switch" id = "plasticPaintShopModeSwitch">
+            <input type="checkbox" class = "CheckBox" id = "plasticPaintShopModeCheckBox">
+            <span class="Slider" id = "plasticPaintShopModeSlider"></span>
+          </label>
+        </div>
+        <!-- ASSEMBLY SHOP mode indicator -->
+        <div class = "StatusIndicatorsBlocks" id = "assemblyShopModeBlock">
+          <h2 class = "DataBlockHeaders" id = "assemblyShopModeHeader">Assembly shop:</h2>
+          <label class="Switch" id = "assemblyShopModeSwitch">
+            <input type="checkbox" class = "CheckBox" id = "assemblyShopModeCheckBox">
+            <span class="Slider" id = "assemblyShopModeSlider"></span>
+          </label>
+        </div>
+        <!-- DKD LINE mode indicator -->
+        <div class = "StatusIndicatorsBlocks" id = "dkdLineModeBlock">
+          <h2 class = "DataBlockHeaders" id = "dkdLineModeHeader">DKD Line:</h2>
+          <label class="Switch" id = "dkdLineModeSwitch">
+            <input type="checkbox" class = "CheckBox" id = "dkdLineModeCheckBox">
+            <span class="Slider" id = "dkdLinepModeSlider"></span>
+          </label>
+        </div>
+      </div>
+      <div class = "DataBlocks" id = "mainBlock">
+        <div class = "MainIndicatorsBlocks" id = "productionBlock">
+          <h2 class = "MainBlocksHeaders" id = "productionHeader">Production</h2>
+          <!-- PLANT PRODUCTION DIAGRAMS -->
+          <div class="Pie Animate" style="--p:90;" id = "productionPie"> 90%</div>
+          <div class = "SmallIndicators">
+            <div class = "Speedometers" id = "ckdSpeedometerBlock">
+              <h3 class = "SpeedometerValues" id = "ckdSpeedometerValue">90% CKD</h3>
+              {% include 'canvas/speedometer.html' %}
+            </div>
+            <div class = "Speedometers" id = "dkdSpeedometerBlock">
+              <h3 class = "SpeedometerValues" id = "dkdSpeedometerValue">80% DKD</h3>
+              {% include 'canvas/speedometer.html' %}
+            </div>
+          </div>
+        </div>
+        <div class = "MainIndicatorsBlocks" id = "qualityBlock">
+          <h2 class = "MainBlocksHeaders" id = "qualityHeader">Quality</h2>
+          <!-- PLANT QUALITY DIAGRAMS -->
+          <div class="Pie Animate" style="--p:74;" id = "qualityPie"> 75%</div>
+          <div class = "SmallIndicators">
+            <div class = "Speedometers" id = "ckdQualitySpeedometerBlock">
+              <h3 class = "SpeedometerValues" id = "ckdQualitySpeedometerValue">65% CKD</h3>
+              {% include 'canvas/speedometer.html' %}
+            </div>
+            <div class = "Speedometers" id = "dkdQualitySpeedometerBlock">
+              <h3 class = "SpeedometerValues" id = "dkdQualitySpeedometerValue">75% DKD</h3>
+              {% include 'canvas/speedometer.html' %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class = "DataBlocks" id = "annexesBlock">
+        <!-- user block -->
+        <div class = "StatusIndicatorsBlocks" id = "userBlock">
+          <h2 class = "DataBlockHeaders" id = "currentUser">Alexeyev Igor | user</h2>
+          <div class = "IconBlocks" id = "logoutIconBlock">
+            <button type = "button" class = "HelpButtons" id = "logOutButton" title = "Log out" onclick = ""></button>
+          </div>
+        </div
+        <!-- language block -->
+        <div class = "StatusIndicatorsBlocks" id = "langBlock">
+          <h2 class = "DataBlockHeaders" id = "langId">Language: EN</h2>
+          <div class = "IconBlocks" id = "langIconBlock">
+            <button type = "button" class = "HelpButtons" id = "langButton" title = "Language" onclick = ""></button>
+          </div>
+        </div
+          <!-- information block -->
+          <div class = "StatusIndicatorsBlocks" id = "infoBlock">
+            <h2 class = "DataBlockHeaders" id = "infoId">Information</h2>
+            <div class = "IconBlocks" id = "infoIconBlock">
+              <button type = "button" class = "HelpButtons" id = "infoButton" title = "Help" onclick = ""></button>
+            </div>
+          </div>
+          <br>
+          <!-- customer audit (AVES) results -->
+        <div class = "StatusIndicatorsBlocks" id = "customerAuditBlock">
+          <h2 class = "DataBlockHeaders" id = "customerAuditHeader">Customer audit results</h2>
+        </div>
+        <div class = "StatusIndicatorsBlocks" id = "customerModelBlock">
+          <h2 class = "DataBlockHeaders" id = "customerModelHeader">Model</h2>
+          <div class = "IconBlocks" id = "customerModelPictBlock">
+            <img alt = "model-icon" src = "../static/img/models/us4.png" class = "ModelIconImg" title = "US4"> 
+          </div>
+        </div>
+        <div class = "StatusIndicatorsBlocks" id = "interiorBlock">
+          <h2 class = "DataBlockHeaders" id = "interiorHeader">Interior</h2>
+          <div class = "IconBlocks" id = "interiorProgressBlock">
+             <h4 class = "AuditValue" id = "interiorValue">95%</h4>
+             <div class = "AuditProgress" id = "interiorResult" style = "width: 95%; background: #68bb76;"></div>
+         </div>
+          </div>
+          <div class = "StatusIndicatorsBlocks" id = "exteriorBlock">
+            <h2 class = "DataBlockHeaders" id = "exteriorHeader">Exterior</h2>
+            <div class = "IconBlocks" id = "exteriorProgressBlock">
+               <h4 class = "AuditValue" id = "exteriorValue">92%</h4>
+               <div class = "AuditProgress" id = "exteriorResult" style = "width: 92%; background: #68bb76;"></div>
+            </div>
+          </div>
+          <div class = "StatusIndicatorsBlocks" id = "functioningBlock">
+            <h2 class = "DataBlockHeaders" id = "functioningHeader">Functions</h2>
+            <div class = "IconBlocks" id = "functioningProgressBlock">
+               <h4 class = "AuditValue" id = "functioningValue">85%</h4>
+               <div class = "AuditProgress" id = "functioningResult" style = "width: 85%; background: #68bb76;"></div>
+            </div>
+          </div>
+          <div class = "StatusIndicatorsBlocks" id = "engineBlock">
+            <h2 class = "DataBlockHeaders" id = "engineHeader">Engine room</h2>
+            <div class = "IconBlocks" id = "engineProgressBlock">
+               <h4 class = "AuditValue" id = "engineValue">100%</h4>
+               <div class = "AuditProgress" id = "engineResult" style = "width: 100%; background: #68bb76;"></div>
+            </div>
+          </div>
+          <div class = "StatusIndicatorsBlocks" id = "drivingBlock">
+            <h2 class = "DataBlockHeaders" id = "drivingHeader">Driving</h2>
+            <div class = "IconBlocks" id = "drivingProgressBlock">
+               <h4 class = "AuditValue" id = "drivingValue">100%</h4>
+               <div class = "AuditProgress" id = "drivingResult" style = "width: 100%; background: #68bb76;"></div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <button type = "button" id = "startButton" onclick = "">Start</button>
+  </div>
+{% endblock %}
+{% block scripts %}
+  <script src = "../static/js/home.js"></script>
 {% endblock %}

@@ -12,3 +12,8 @@ X98: V.1.01
 X98: V.1.02
 1. Defining on 'render.com': free instance type (Free instances spin down after periods of inactivity. They do not support SSH access, scaling, one-off jobs, or persistent disks. Select any paid instance type to enable these features.)
 Correction : module 'app' on 'app.py'.
+
+X92: V.1.03
+1. Definition of all application titles dicionary;
+2. Adding titles to 'base.html' template;
+3.
